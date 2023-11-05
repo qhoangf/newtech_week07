@@ -1,11 +1,16 @@
-const express = require("express");
+const express = require('express');
 const {
     httpGetAllLaunches,
     httpAddNewLaunch,
-} = require("./launches.controller");
+    httpAbortLaunch,
+} = require('./launches.controller');
 
-const launchesRouter = express.Router();
-launchesRouter.get("/", httpGetAllLaunches);
-launchesRouter.post("/", httpAddNewLaunch);
+const launchesRotuter = express.Router();
 
-module.exports = launchesRouter
+
+
+launchesRotuter.get('/', httpGetAllLaunches);
+launchesRotuter.post('/', httpAddNewLaunch);
+launchesRotuter.delete(`/:id`, httpAbortLaunch)
+
+module.exports = launchesRotuter;
